@@ -1,0 +1,14 @@
+OKF INKUBATOR
+\
+#{t("hello") + " " + @username},
+\
+#{t("new_comment")} #{@comment.user.name}:
+= @idea.title
+\
+**#{t('a_comment')}
+= @comment.content 
+\
+= idea_url(@idea)
+\
+Der freundliche OKF Inkubator Mailer
+

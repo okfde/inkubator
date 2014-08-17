@@ -1,0 +1,24 @@
+- title t('all_ideas')
+
+%h2 Hintergrund
+.panel
+  %p
+    Die Grundidee des Inkubators ist es, dass alle Projektideen durch einen standardisierten Prozess durchlaufen, bei dem die Relevanz und die Machbarkeit einer Projektidee von allen Beteiligten bewertet werden. Nur, wenn eine Projektidee alle Prozessschritte erfolgreich durchläuft, soll ein Projekt umgesetzt werden. Für Änderungen an den Texten auf der ganzen Webseite bitte hier ändern:
+    %a{:href => "https://docs.google.com/spreadsheet/ccc?key=0AtMts_R3W2qxdFJRNVNUdUVhaTZsME1Bb2pyOGRHeEE#gid=0", :target => "_blank"}
+      Google Docs
+    und eine kurze E-Mail an Christian.Kreutz@okfn.org
+
+%h2
+  - if current_user.try(:board?)
+    Aktive Ideen
+  - else
+    Meine Ideen
+
+= render :partial => "idea_item", :locals => {:ideas => @ideas}
+
+%h2
+  Ideenspeicher
+%p
+  Ideen die ein Quorum nicht erreicht haben oder schon seit längerer Zeit (mehr als eine Woche) nicht mehr vom Ideengeber bearbeitet wurden.
+= render :partial => "idea_item", :locals => {:ideas => @ideas_archive}
+

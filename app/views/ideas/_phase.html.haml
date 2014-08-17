@@ -1,0 +1,5 @@
+.label.success
+  - if @idea.workflow_state
+    = t("#{@idea.current_phase}")
+  - else
+    Ideenskizze

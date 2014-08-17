@@ -1,0 +1,15 @@
+- if params[:controller] == "ideas" &&  params[:action] == "new"
+  - progress = 10
+  - step = t(".first_step_create_idea")
+
+.progress.large-12.success.round
+  %span{:class => "meter", :style => "width: #{@idea.workflow_state ? @idea.progress : 10}"}
+    %span.percentage
+      - if @idea.workflow_state
+        = @idea.progress
+      - else
+        10 %
+
+
+
+

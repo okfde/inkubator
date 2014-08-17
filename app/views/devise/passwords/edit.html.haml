@@ -1,0 +1,19 @@
+- title 'Passwort ändern'
+
+%h2
+  = t("change_your_password")
+= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f|
+  = devise_error_messages!
+  = f.hidden_field :reset_password_token
+  .row
+    .small-8.columns
+      = f.label t("new_password")
+      = f.password_field :password
+  .row
+    .small-8.columns
+      = f.label t("confirm_new_password")
+      = f.password_field :password_confirmation
+  .row
+    .small-8.columns
+      = f.submit "change_your_password", :class => "button round"
+      = render "devise/shared/links"

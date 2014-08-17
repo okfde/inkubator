@@ -1,0 +1,65 @@
+
+= form_for @idea do |f|
+  - if @idea.errors.any?
+    #error_explanation
+      %h2= "#{@idea.errors.count} Fehler verhinderten das Speichern der Idee:"
+      - @idea.errors.full_messages.each do |msg|
+        %p= msg
+  .row
+    .large-8.columns
+      = f.label t('title')
+      = f.text_field :title
+    .large-4.columns
+      Denk an eine Zeitungsüberschrift. Mach es spannend!
+  .row
+    .large-8.columns
+      = f.label t('description')
+      = f.text_area :description
+    .large-4.columns
+      %p
+        Kurze Beschreibung um was es geht. Kann auf Wunsch ausgefüllt werden.
+  .row
+    .large-8.columns
+      = f.label t('problem')
+      = f.text_area :problem
+    .large-4.columns
+      %p
+        Darstellung des Problems. Wo liegt genau das Problem?  Wird eine Lösung nachgefragt? 
+        %br
+        Max. 300 Zeichen!
+  .row
+    .large-8.columns
+      = f.label t('goal')
+      = f.text_area :goal
+    .large-4.columns.spacebottom-20
+      %p
+        Darstellung des Ziels und der Umsetzung des Projektes kurz und knapp. Ist dies mit den Zielen der OKF DE vereinbar? Passt das zu den bisherigen Projekten? 
+        %br
+        Max. 300 Zeichen!
+  .row
+    .large-8.columns
+      = f.label t('impact')
+      = f.text_area :impact, :id => "impact"
+    .large-4.columns.spacebottom-20
+      %p
+        Beschreibung der erhofften Wirkung. Bitte möglichst konkret. Beispiel: Wir wollen XX Personen im Jahr erreichen, die durch unsere Anwendung XX besser machen können und XX erreichen.
+        %br
+        Max. 300 Zeichen!
+      .label
+        #result
+  .row
+    .large-4.columns
+      = f.select :status, options_for_select({t('Idee aktiv') => nil, t('Idee pausieren') => 2}, @idea.status.to_s)
+    .large-4.large-offset-by-4.columns.spacebottom-20
+      Es werden keine E-Mail Benachrichtigungen mehr verschickt.
+  .row
+    .actions
+      = f.submit t('save'), :class => "button round"
+      = link_to t('cancel'), ideas_path
+
+:javascript
+  var elem = document.getElementById('impact')
+
+  new Countable(elem, function (counter) {
+    //alert(counter.words)
+  })

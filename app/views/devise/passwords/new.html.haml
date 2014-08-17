@@ -1,0 +1,16 @@
+- title 'Passwort'
+
+%h2
+  = t("forgot_your_password")
+= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
+  = devise_error_messages!
+  .row
+    .small-8.columns
+      = f.label t('email')
+      = f.email_field :email
+  .row
+    .small-8.columns
+      = f.submit t("send_me_password"), :class => "button round"
+  .row
+    .small-8.columns
+      = render "devise/shared/links"

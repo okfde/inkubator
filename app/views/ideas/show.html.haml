@@ -1,0 +1,136 @@
+- title 'Idee'
+
+.row.spacetop-20
+  .large-9.columns
+    %h3
+      = @idea.title
+  .large-3.columns
+    %h5
+      Ideengeber:
+      = @idea.user.try(:username) || @idea.user.email
+.row
+  .large-12.columns
+    = render 'overview'
+.row.spacetop-20
+  .large-8.columns
+    %h4
+      = t('description')
+    %p
+      = auto_link(@idea.description)
+  .large-4.columns
+    - if @idea.mentors.count > 0
+      %h4 Mentoren
+      - @idea.mentors.each do |mentor|
+        %p
+          = mentor.try(:username) || mentor.email
+.row
+  .large-8.columns
+    %h4
+      = t('problem')
+    %p
+      = @idea.problem
+  .large-4.columns
+    - if @idea.votings.count > 0
+      .panel
+        %h6
+          Beurteilung: Problem
+        %ul
+          %li
+            Realistisch:
+            = @idea.votings.where(:problem => 1).count
+          %li
+            Unrealistisch:
+            = @idea.votings.where(:problem => -1).count
+          %li
+            Enthalten:
+            = @idea.votings.where(:problem => 0).count
+
+
+.row
+  .large-8.columns
+    %h4
+      = t('goal')
+    %p
+      = @idea.goal
+  .large-4.columns
+    - if @idea.votings.count > 0
+      .panel
+        %h6
+          Beurteilung: Ziel
+        %ul
+          %li
+            Realistisch:
+            = @idea.votings.where(:goal => 1).count
+          %li
+            Unrealistisch:
+            = @idea.votings.where(:goal => -1).count
+          %li
+            Enthalten:
+            = @idea.votings.where(:goal => 0).count
+.row
+  .large-8.columns
+    %h4
+      = t('impact')
+    %p
+      = @idea.impact
+  .large-4.columns
+    - if @idea.votings.count > 0
+      .panel
+        %h6
+          Beurteilung: Wirkung
+        %ul
+          %li
+            Realistisch:
+            = @idea.votings.where(:impact => 1).count
+          %li
+            Unrealistisch:
+            = @idea.votings.where(:impact => -1).count
+          %li
+            Enthalten:
+            = @idea.votings.where(:impact => 0).count
+
+- if @idea.workflow_state == 'finance' || @idea.workflow_state == 'finance_voting' || @idea.status == 1
+  .row
+    .large-8.columns
+      %h4
+        Finanzkonzept
+      %p
+        = auto_link(@idea.finance)
+    .large-4.columns
+      - if @idea.votings.count(:finance) > 0
+        .panel
+          %h6
+            Beurteilung: Finanzen
+          %ul
+            %li
+              Realistisch:
+              = @idea.votings.where(:finance => 1).count
+            %li
+              Unrealistisch:
+              = @idea.votings.where(:finance => -1).count
+            %li
+              Enthalten:
+              -# checkx count all enthalten von voriger abstimmung
+              = @idea.votings.where(:finance => 0).count
+
+.row.spacetop-50
+  .large-10.columns
+    .row
+      .small-12.title
+        %h6
+          Kommentare:
+          = @idea.comments.count(:id)
+    - if @comments.present?
+      - @comments.each do |comment|
+        %br
+        %p
+          %b
+            Kommentar von
+            = comment.user.name
+          \-
+          = l comment.created_at, :format => :short
+        %p
+          = simple_format(comment.content)
+    = render :partial => "comments/form", :locals => {:commentable => @idea} if current_user.present?
+
+

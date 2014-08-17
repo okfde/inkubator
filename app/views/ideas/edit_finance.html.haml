@@ -1,0 +1,27 @@
+- title 'Finanz-Konzept bearbeiten'
+
+.row.edit-idea
+  .large-12.columns
+    %h1
+      Finanz-Konzept
+
+    = render 'overview'
+    = form_for @idea, :url => { :action => "update_finance"},  :method => :post do |f|
+      - if @idea.errors.any?
+        #error_explanation
+          %h2= "#{@idea.errors.count} Fehler verhinderten das Speichern der Idee:"
+          - @idea.errors.full_messages.each do |msg|
+            %p= msg
+
+      .row
+        .large-8.columns
+          = f.label t('finance')
+          = f.text_area :finance
+        .large-4.columns
+          %p
+            Das Finanz-Konzept. Wie soll die Idee finanziert werden?
+
+      .row
+        .actions
+          = f.submit t('save'), :class => "button round"
+          = link_to t('cancel'), ideas_path

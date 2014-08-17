@@ -1,0 +1,102 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+de:
+  tooltip_ideenskizze: "Hier kannst deine Idee einreichen und editieren."
+  tooltip_mentor: "Hier kannst und musst du eine/n Mentor/In für deine Idee auswählen."
+  tooltip_voting: "In dieser Phase werden deine Ideen von OKF Mitgliedern beurteilt."
+  tooltip_finance: "Hier musst du beschreiben, wie das Projekt finanziert werden soll."
+  tooltip_finance_voting: "In dieser Phase wird der Finanzierungsplan von OKF Mitgliedern beurteilt."
+  tooltip_geschafft: "Hier erfährst du, ob deine Idee umgesetzt wird oder in den Ideenspeicher wandert."
+  finance_voting: "Beurteilung Finanzen"
+  new_comment: "Neuer Kommentar von"
+  show: "Anzeigen"
+  abstain: "Enthalten"
+  unrealistic: "Unrealistisch"
+  realistic: "Realistisch"
+  voting: "Beurteilung"
+  mentor: "Mentoren"
+  finance: "Finanzierung"
+  ideenskizze: "Ideenskizze"
+  title: "Titel"
+  edit: "Bearbeiten"
+  email: "E-Mail"
+  password: "Passwort"
+  hello: "Hallo"
+  new_idea_by: "Neue Idee von "
+  new_idea: "Neue Idee"
+  sign_in: "Anmelden"
+  sign_up: "Registrieren"
+  logout: "Abmelden"
+  settings: "Einstellungen"
+  username: "Benutzername"
+  leave_blank: "(Passwort nur nötig bei Änderung)"
+  remember_me: "Angemeldet bleiben"
+  edit_settings: "Einstellungen ändern"
+  save: "Speichern"
+  update: "Aktualisieren"
+  change_your_password: "Ändere dein Passwort"
+  forgot_your_password?: "Passwort vergessen?"
+  forgot_your_password: "Passwort vergessen"
+  confirm_new_password: "Bestätige neues Passwort"
+  password_confirmation: "Passwort bestätigen"
+  current_password: "Aktuelles Passwort"
+  new_password: "Neues Passwort"
+  send_me_password: "Passwort schicken"
+  comment: "Kommentieren"
+  a_comment: "Kommentar"
+  description: "Beschreibung"
+  problem: "Problem"
+  goal: "Ziel"
+  impact: "Wirkung"
+  cancel: "Abbrechen"
+  save: "Speichern"
+  progress: "Ablauf"
+  all_ideas: "Alle ideen"
+  create_idea: "Neue Idee"
+  edit_idea: "Idee bearbeiten"
+  phase:
+    mentor: "Mentoren finden"
+  time:
+     formats:
+       short: "%d.%m.%Y"
+
+  activerecord:
+    models:
+      idea: "Idee"
+      comment: "Kommentar"
+    successful:
+      messages:
+        created: "%{model} erfolgreich gespeichert"
+    errors:
+      models:
+        user:
+          attributes:
+            password:
+              too_short: "Passwort zu kurz. Minimum 8 Zeichen."
+              blank: "Passwort darf nicht leer sein"
+              confirmation: "Passwort Bestätigung fehlt"
+            email:
+              blank: "E-Mail darf nicht leer sein"
+        idea:
+          attributes:
+            title:
+              is_required: "wird benötigt."
+            description:
+              is_required: "wird benötigt."
+            impact:
+              minimum_content: "Minimum 100 Zeichen."
+              maximum_content: "Maximum 300 Zeichen."
+              is_required: "wird benötigt."
+            goal:
+              minimum_content: "Minimum 100 Zeichen."
+              maximum_content: "Maximum 300 Zeichen."
+              is_required: "wird benötigt."
+            problem:
+              is_required: "wird benötigt."
+              minimum_content: "Minimum 100 Zeichen."
+              maximum_content: "Maximum 300 Zeichen."
+            finance:
+              is_required: "wird benötigt."
+              minimum_content: "Minimum 100 Zeichen."
+              maximum_content: "Maximum 300 Zeichen."

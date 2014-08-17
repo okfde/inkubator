@@ -1,0 +1,25 @@
+.row
+  .large-12.columns.spacetop-20
+    .panel
+      .row
+        .large-8.columns
+          %h4
+            = t("progress")
+        .large-4.columns
+          - if @idea.status !=1
+            %b Phase:
+            = render 'phase'
+      .row
+        .large-12.columns
+          = render 'progress_bar'
+      .row
+        .large-10.columns.spacetop-20
+          %b
+            Schritte:
+          - (0...Idea::PHASE.size).each do |i|
+            = step_link @idea, i
+          = link_to "Geschafft", "#", "data-tooltip" => "", :class =>"has-tip", :title => t("tooltip_geschafft"), :class => "button success round small #{@idea.status  == 1 ? '' : 'disabled' }"
+          %br
+            Hilfe: Hover über Buttons.
+        .large-2.columns.spacetop-10
+          = link_to "Stand", idea_path(@idea), :class => "button round" if @idea.persisted?

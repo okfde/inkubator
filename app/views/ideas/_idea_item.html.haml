@@ -1,0 +1,43 @@
+- ideas.each do |idea|
+  - if can? :read, idea
+    .panel
+      .row
+        .large-10.columns
+          .row
+            .large-9.columns
+              %h3
+                = link_to idea.title, idea_path(idea)
+            .large-3.columns
+              .label.success
+                - if idea.status != 1
+                  - if idea.workflow_state
+                    Phase:
+                    = t("#{idea.current_phase}")
+                  - else
+                    Ideenskizze
+                - else
+                  Fertig
+
+          %p
+            = auto_link(idea.description)
+          %p
+            von
+            = idea.user.try(:username) || idea.user.email
+
+        .large-2.columns
+          .panel
+            %p
+              Hab ich was zu tun?
+              - if to_do_check(idea, idea.phase_index) == true
+                JA!
+                .label.alert
+                  To-Do:
+                  %br
+                  = t("#{idea.current_phase}")
+              - else
+                Nein. Relax.
+          = link_to t('show'), idea, :class => "button"
+          - if can? :edit, idea
+            = link_to t('edit'), edit_idea_path(idea), :class => "button"
+          - if can? :destroy, idea
+            = link_to t('destroy'), idea, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "button"

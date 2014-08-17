@@ -1,0 +1,24 @@
+OKF INKUBATOR
+\
+#{t("hello") + " " + @username},
+\
+Die Idee von #{@idea.user.name} hat das 2/3 Quorum geschafft! D.h. 2/3 haben jeweils jeden unten stehenden Punkt als realistisch gesehen! Nun geht es an das Finanz-Konzept.
+\
+= @idea.title
+\
+**#{t('description')}
+= @idea.description 
+\
+**#{t('goal')}
+= @idea.goal 
+\
+**#{t('problem')}
+= @idea.problem 
+\
+**#{t('impact')}
+= @idea.impact 
+\
+= idea_url(@idea)
+\
+Der freundliche OKF Inkubator Mailer
+

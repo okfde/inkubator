@@ -1,0 +1,23 @@
+OKF INKUBATOR
+\
+#{t("hello") + " " + @username},
+\
+#{t("new_idea_by")} #{@idea.user.name}:
+= @idea.title
+\
+**#{t('description')}
+= @idea.description 
+\
+**#{t('goal')}
+= @idea.goal 
+\
+**#{t('problem')}
+= @idea.problem 
+\
+**#{t('impact')}
+= @idea.impact 
+\
+= idea_url(@idea)
+\
+Der freundliche OKF Inkubator Mailer
+

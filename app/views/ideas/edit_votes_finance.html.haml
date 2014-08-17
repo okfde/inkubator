@@ -1,0 +1,16 @@
+- title 'Finanzen beurteilen'
+
+= render 'overview'
+
+= form_for @voting, :url => idea_update_votes_finance_path(@idea), :method => :post do |f|
+  .row
+    .large-8.columns.spacetop-20
+      %h4
+        Finanzkonzept
+      = @idea.finance
+    .large-4.columns.spacetop-20
+      %br
+      = f.select :finance, options_for_select({t('realistic') => 1, t('unrealistic') => -1, t('abstain') => 0}, @voting.finance.to_s)
+  .row
+    .large-8.columns.spacetop-20
+      = f.submit t('save'), :class => "button round"

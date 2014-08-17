@@ -1,0 +1,15 @@
+- title 'Mentoren'
+
+= render 'overview'
+.panel
+  In diesem Schritt musst du mindestens einen Mentor aus der OKF für deine Idee gewinnen! Falls du dies erreicht hast, kannst du unten den Namen auswählen. Bitte vorher nachfragen!
+
+= form_for @idea, url: idea_update_mentor_path(@idea), method: :post do
+  = hidden_field_tag "idea[mentor_ids][]", nil
+  - for user in @users
+    %p
+      - if user.role != 'superadmin'
+        - if current_user != user and user.role == "board"
+          = check_box_tag "idea[mentor_ids][]", user.id, @idea.mentor_ids.include?(user.id)
+          = user.email
+  = submit_tag t('save'), :class => "button round"

@@ -1,0 +1,74 @@
+.icon-vote {
+  font-size: 45px;
+}
+
+.logo {
+  float: left;
+  height: 35px;
+  margin-right: 10px;
+  margin-top: 5px;
+
+}
+
+.brand {
+  padding-top: 15px;
+  font-size: 16px;
+  font-weight: 200;
+  color: #777;
+  display: block;
+}
+
+.spacetop-10 {
+  padding-top: 10px;
+}
+
+.spacetop-20 {
+  padding-top: 20px;
+}
+
+.spacebottom-20 {
+  padding-bottom: 20px;
+}
+
+.spacetop-50 {
+  padding-top: 50px;
+}
+
+.title {
+  background: orange;
+  color: #ffffff;
+  padding: 5px;
+  margin-left: 15px;
+}
+
+.sitename {
+  margin-top: 5px;
+  font-size: 24px;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.percentage {
+  color: #ffffff;
+  margin-left: 40px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.edit-idea textarea, .new-idea textarea {
+  height: 150px !important;
+  font-size: 16px;
+}
+
+.edit-idea label, .new-idea label {
+  font-size: 18px;
+}
+
+.edit-idea p, .new-idea p {
+  margin-top: 20px;
+}
+
+input[type="text"], input[type="password"], input[type="email"] {
+  font-size: 16px !important;
+  font-weight: bold;
+}

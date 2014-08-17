@@ -1,0 +1,7 @@
+%h4
+  = t('comment')
+= form_for([commentable, Comment.new()], :html => {:class => 'comment' }) do |f|
+  .control-group
+    = f.text_area :content, :class => 'form-textarea'
+  .actions
+    = f.submit t('save'), :class => 'button rounded'
