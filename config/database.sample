@@ -7,9 +7,9 @@ development:
   adapter: postgresql
   encoding: utf8
   reconnect: false
-  database: okf_inkubator 
+  database: okf_inkubator
   pool: 5
-  username: 
+  username:
   password:
   host: localhost
 
