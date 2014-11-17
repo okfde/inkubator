@@ -1,12 +1,10 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
-
 FactoryGirl.define do
   factory :idea do
-    string ""
-    text ""
-    text ""
-    text ""
-    text ""
-    integer ""
+    title "Test"
+    description Faker::Lorem.sentence(3)
+    problem Faker::Lorem.words(195)
+    goal Faker::Lorem.words(195)
+    impact Faker::Lorem.words(195)
+    user
   end
 end
