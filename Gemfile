@@ -24,6 +24,7 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'dotenv-rails'
   gem 'faker'
+  gem 'capybara'
   # gem "email_spec"
 end
 
