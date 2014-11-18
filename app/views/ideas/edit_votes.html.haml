@@ -10,7 +10,7 @@
       = @idea.problem
     .large-4.columns.spacetop-20
       %br
-      = f.select :problem, options_for_select({t('realistic') => 1, t('unrealistic') => -1, t('abstain') => 0}, @voting.problem.to_s)
+      = f.select :problem, options_for_select({t('select') => '', t('realistic') => 1, t('unrealistic') => -1, t('abstain') => 0}, @voting.problem.to_s)
   .row
     .large-8.columns.spacetop-20
       %h4
@@ -18,7 +18,7 @@
       = @idea.goal
     .large-4.columns.spacetop-20
       %br
-      = f.select :goal, options_for_select({t('realistic') => 1, t('unrealistic') => -1, t('abstain') => 0}, @voting.goal.to_s)
+      = f.select :goal, options_for_select({t('select') => '', t('realistic') => 1, t('unrealistic') => -1, t('abstain') => 0}, @voting.goal.to_s)
   .row
     .large-8.columns.spacetop-20
       %h4
@@ -26,7 +26,7 @@
       = @idea.impact
     .large-4.columns.spacetop-20
       %br
-      = f.select :impact, options_for_select({t('realistic') => 1, t('unrealistic') => -1, t('abstain') => 0}, @voting.impact.to_s)
+      = f.select :impact, options_for_select({t('select') => '', t('realistic') => 1, t('unrealistic') => -1, t('abstain') => 0}, @voting.impact.to_s)
 
   .row
     .large-8.columns.spacetop-20
