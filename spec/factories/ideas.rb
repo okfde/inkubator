@@ -2,9 +2,9 @@ FactoryGirl.define do
   factory :idea do
     title "Test"
     description Faker::Lorem.sentence(3)
-    problem Faker::Lorem.words(195)
-    goal Faker::Lorem.words(195)
-    impact Faker::Lorem.words(195)
+    problem Faker::Lorem.sentence(10)
+    goal Faker::Lorem.sentence(15)
+    impact Faker::Lorem.sentence(15)
     user
   end
 end
