@@ -3,13 +3,16 @@ class Idea < ActiveRecord::Base
   PHASE = ['ideenskizze', 'mentor', 'voting', 'finance', 'finance_voting']
 
   attr_accessible :description, :status, :problem, :goal, :impact, :title, :workflow_state, :mentor_ids, :finance
-  belongs_to :user
 
-  validates_presence_of :title, :description, :problem, :user_id, :goal, :impact, :message => :is_required
+  validates_presence_of :title, :description, :problem, :goal, :impact, :user
+
+  validates :problem, length: { maximum: 300, minimum: 80 }
+  validates :goal, length: { maximum: 300, minimum: 80 }
+  validates :impact, length: { maximum: 412, minimum: 80 }
+
   has_and_belongs_to_many :mentors, class_name: 'User', join_table: :mentors
-
+  belongs_to :user
   has_many :comments, as: :commentable, dependent: :destroy
-
   has_many :votings
 
   PHASE.each do |phase_name|
@@ -18,13 +21,6 @@ class Idea < ActiveRecord::Base
 
   scope :entered_step_before, ->(timestamp) { where('ideas.updated_at < ?', timestamp)}
   scope :active, ->(timestamp) { where('ideas.updated_at > ?', timestamp)}
-
-
-  validates :problem, :length => { :maximum => 300, :message => :maximum_content, :minimum => 80, :message => :minimum_content}
-  validates :goal, :length => { :maximum => 300, :message => :maximum_content, :minimum => 80, :message => :minimum_content}
-  validates :impact, :length => { :maximum => 300, :message => :maximum_content, :minimum => 80, :message => :minimum_content}
-  #validates :finance, :length => { :maximum => 300, :message => :maximum_content, :minimum => 80, :message => :minimum_content}
-
 
   def phase_index
     if workflow_state

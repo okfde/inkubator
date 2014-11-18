@@ -4,31 +4,33 @@ gem 'rails', '3.2.13'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-
-group :production do
-  gem 'pg'
-  gem 'thin'
-end
-
 group :development do
-  gem 'pg'
   gem 'letter_opener'
   gem 'quiet_assets'
-  gem "binding_of_caller"
   gem 'pry'
+end
+
+group :development, :production do
+  gem 'pg'
 end
 
 group :development, :test do
   gem 'rspec-rails'
   gem 'spring'
   gem "factory_girl_rails"
+  gem 'database_cleaner'
   gem 'sqlite3'
   gem "better_errors"
   gem 'binding_of_caller'
   gem 'dotenv-rails'
+  gem 'faker'
+  gem 'capybara'
   # gem "email_spec"
 end
 
+group :test do
+  gem 'shoulda-matchers', require: false
+end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

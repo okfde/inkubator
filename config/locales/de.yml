@@ -69,6 +69,11 @@ de:
       messages:
         created: "%{model} erfolgreich gespeichert"
     errors:
+      messages:
+        record_invalid: "Invalider Eintrag"
+        too_short: "%{attribute} ist zu kurz (Minimum ist %{count} Zeichen)"
+        too_long: "%{attribute} ist zu lang (Maximum ist %{count} Zeichen)"
+        blank: "%{attribute} darf nicht leer sein"
       models:
         user:
           attributes:
