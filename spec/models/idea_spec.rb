@@ -41,4 +41,18 @@ describe Idea do
       it { expect(subject.finished?).to eq(true) }
     end
   end
+  describe '#forward_workflow_to_finance' do
+    context 'all necessary votes are given' do
+      it 'changed workflow to finance' do
+        allow(subject).to receive(:all_votes_necessary?) { true }
+        expect{ subject.forward_workflow_to_finance }.to change{ subject.workflow_state }.to("finance")
+      end
+    end
+    context 'not all necessary votes are given' do
+      it 'does not change workflow to finance' do
+        allow(subject).to receive(:all_votes_necessary?) { false }
+        expect{ subject.forward_workflow_to_finance }.to_not change{ subject.workflow_state }
+      end
+    end
+  end
 end

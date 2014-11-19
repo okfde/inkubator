@@ -49,4 +49,42 @@ class Idea < ActiveRecord::Base
   def finished?
     status == 1
   end
+
+  def forward_workflow_to_finance
+    if all_votes_necessary?
+      self.update_column(:workflow_state, "finance")
+      send_mail_about_progress_to_finance
+    end
+  end
+
+  def send_mail_about_progress_to_finance
+    send_mail_to_board
+    send_mail_to_user
+  end
+
+  def send_mail_to_board
+    User.board_members.each do |user|
+      IdeaMailer.idea_votes_board(user, self).deliver
+    end
+  end
+
+  def send_mail_to_user
+    IdeaMailer.idea_made_votes(user, self).deliver
+  end
+
+  def all_votes_necessary?
+    problem_votes_enough? && goal_votes_enough? && impact_votes_enough?
+  end
+
+  def problem_votes_enough?
+    votings.problems.count >= 7
+  end
+
+  def goal_votes_enough?
+    votings.goals.count >= 7
+  end
+
+  def impact_votes_enough?
+    votings.impacts.count >= 7
+  end
 end
