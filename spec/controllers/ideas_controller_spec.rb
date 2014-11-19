@@ -69,4 +69,28 @@ describe IdeasController, type: :controller do
     end
   end
 
+  describe "POST update_votes" do
+    login_user
+    before :each do
+      @idea = create(:idea, workflow_state: "voting")
+    end
+    context "valid parameters" do
+      let(:voting) { { problem: 0, goal: 0, impact: 0 } }
+      context "first voter" do
+        it "creates a new vote" do
+          expect {
+            post :update_votes, idea_id: @idea.to_param, voting: voting
+          }.to change(Voting, :count).by(1)
+        end
+      end
+    end
+    context "invalid parameters" do
+      it "does not create a new vote" do
+        expect {
+          post :update_votes, idea_id: @idea.to_param, voting: {}
+        }.to_not change(Voting, :count)
+      end
+    end
+  end
+
 end

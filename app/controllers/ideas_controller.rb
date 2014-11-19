@@ -66,7 +66,6 @@ class IdeasController < ApplicationController
 
   def update_votes
     @idea = Idea.find(params[:idea_id])
-
     @voting = Voting.for_idea(@idea, current_user)
 
     if @voting.update_attributes(params[:voting])
@@ -85,6 +84,7 @@ class IdeasController < ApplicationController
       end
       redirect_to idea_path(@idea)
     else
+      redirect_to idea_path(@idea)
       # failure
     end
   end
