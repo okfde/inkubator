@@ -1,6 +1,8 @@
 class Voting < ActiveRecord::Base
   attr_accessible :user_id, :idea_id, :problem, :goal, :impact, :finance
 
+  validates_inclusion_of :problem, :goal, :impact, in: [1, -1, 0]
+
   belongs_to :user
   belongs_to :idea
 

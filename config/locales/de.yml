@@ -106,3 +106,11 @@ de:
               is_required: "wird benötigt."
               minimum_content: "Minimum 100 Zeichen."
               maximum_content: "Maximum 300 Zeichen."
+        voting:
+          attributes:
+            problem:
+              inclusion: "Bitte wähle eine Bewertung für Problem aus"
+            goal:
+              inclusion: "Bitte wähle eine Bewertung für das Ziel aus"
+            impact:
+              inclusion: "Bitte wähle eine Bewertung für die Wirkung aus"
