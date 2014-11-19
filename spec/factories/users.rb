@@ -3,6 +3,7 @@ FactoryGirl.define do
     username "Test"
     sequence(:email)      { |n| "person_#{n}@example.com" }
     password "abcdefghi1234"
+    role "board"
     after(:build) { |u| u.password_confirmation = u.password }
   end
   factory :admin, class: User do
