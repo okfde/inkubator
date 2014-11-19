@@ -21,10 +21,17 @@ RSpec.configure do |config|
 
   config.before(:suite) do
     Warden.test_mode!
+    DatabaseCleaner.strategy = :truncation
+    DatabaseCleaner.clean_with(:truncation)
     begin
       DatabaseCleaner.start
     ensure
       DatabaseCleaner.clean
+    end
+  end
+  config.around(:each) do |example|
+    DatabaseCleaner.cleaning do
+      example.run
     end
   end
   config.after(:each) do
