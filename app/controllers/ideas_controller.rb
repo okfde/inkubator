@@ -70,17 +70,7 @@ class IdeasController < ApplicationController
 
     if @voting.update_attributes(params[:voting])
       if @idea.workflow_state == 'voting'
-        @problem_votes = @idea.votings.where(:problem => true).count
-        @goal_votes = @idea.votings.where(:goal => true).count
-        @impact_votes = @idea.votings.where(:impact => true).count
-        if @problem_votes >= 7 && @goal_votes >= 7 &&  @impact_votes >= 7
-          @idea.update_column(:workflow_state, "finance")
-          users = User.board_members
-          users.each do |user|
-            IdeaMailer.idea_votes_board(user, @idea).deliver
-        end
-          IdeaMailer.idea_made_votes(@idea.user, @idea).deliver
-        end
+        @idea.forward_workflow_to_finance
       end
       redirect_to idea_path(@idea)
     else

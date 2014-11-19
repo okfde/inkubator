@@ -83,6 +83,20 @@ describe IdeasController, type: :controller do
           }.to change(Voting, :count).by(1)
         end
       end
+      context 'last voter' do
+        it "changes idea state to finance" do
+          allow_any_instance_of(Idea).to receive(:all_votes_necessary?) { true }
+          allow_any_instance_of(Idea).to receive(:send_mail_about_progress_to_finance) { }
+          expect {
+            post :update_votes, idea_id: @idea.to_param, voting: voting
+          }.to change{ @idea.reload.workflow_state}.to("finance")
+        end
+        it "sends email to user" do
+          allow_any_instance_of(Idea).to receive(:all_votes_necessary?) { true }
+          expect_any_instance_of(Idea).to receive(:send_mail_about_progress_to_finance)
+          post :update_votes, idea_id: @idea.to_param, voting: voting
+        end
+      end
     end
     context "invalid parameters" do
       it "does not create a new vote" do
