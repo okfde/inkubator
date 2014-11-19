@@ -7,4 +7,10 @@ FactoryGirl.define do
     impact Faker::Lorem.sentence(15)
     user
   end
+  trait :finished do
+    status 1
+  end
+  trait :voting_stage do
+    workflow_state "voting"
+  end
 end

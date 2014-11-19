@@ -36,7 +36,7 @@ describe Idea do
   end
 
   context 'idea finished' do
-    subject { create(:idea, status: 1) }
+    subject { create(:idea, :finished) }
     describe '#finished?' do
       it { expect(subject.finished?).to eq(true) }
     end

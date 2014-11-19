@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'pry'
 
 describe IdeasController, type: :controller do
 
@@ -72,7 +71,7 @@ describe IdeasController, type: :controller do
   describe "POST update_votes" do
     login_user
     before :each do
-      @idea = create(:idea, workflow_state: "voting")
+      @idea = create(:idea, :voting_stage)
     end
     context "valid parameters" do
       let(:voting) { { problem: 0, goal: 0, impact: 0 } }
@@ -106,5 +105,4 @@ describe IdeasController, type: :controller do
       end
     end
   end
-
 end
