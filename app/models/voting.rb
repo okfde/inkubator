@@ -6,6 +6,10 @@ class Voting < ActiveRecord::Base
   belongs_to :user
   belongs_to :idea
 
+  scope :problems, -> { where(problem: 1) }
+  scope :goals, -> { where(goal: 1) }
+  scope :impacts, -> { where(impact: 1) }
+
   def self.for_idea(idea, user)
     if existing_idea = where(user_id: user.id, idea_id: idea.id).first
       existing_idea
