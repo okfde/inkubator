@@ -20,9 +20,12 @@ class Idea < ActiveRecord::Base
   end
 
   scope :entered_step_before, ->(timestamp) { where('ideas.updated_at < ?', timestamp)}
-  scope :active, ->(timestamp) { where('ideas.updated_at > ?', timestamp)}
+  scope :active, ->(timestamp = 7.days.ago) { where('ideas.updated_at > ?', timestamp)}
+  scope :inactive, -> (timestamp = 7.days.ago) { not_finished.entered_step_before(timestamp) }
   scope :finished, -> { where(status: 1) }
   scope :not_finished, -> { where(status: 0) }
+
+  scope :order, -> (order) { order(order) }
 
   def phase_index
     if workflow_state
