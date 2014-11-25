@@ -48,6 +48,7 @@ gem 'thin'
 gem 'rinku', '~> 1.7', :require => 'rails_rinku'
 gem 'rollbar'
 
+gem 'has_scope'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
