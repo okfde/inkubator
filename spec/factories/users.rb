@@ -7,7 +7,7 @@ FactoryGirl.define do
     after(:build) { |u| u.password_confirmation = u.password }
   end
   factory :admin, class: User do
-    username "Test"
+    username "Admin"
     email "admin@admin.com"
     password "abcdefghi1234"
     role "superadmin"
