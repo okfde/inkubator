@@ -4,7 +4,7 @@ class IdeasController < ApplicationController
 
   def index
     @ideas = Idea.active(7.days.ago)
-    @ideas_archive = Idea.entered_step_before(7.days.ago)
+    @ideas_archive = Idea.not_finished.entered_step_before(7.days.ago)
 
     respond_to do |format|
       format.html
