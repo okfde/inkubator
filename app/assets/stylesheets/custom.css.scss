@@ -9,7 +9,11 @@
   margin-top: 5px;
 
 }
-
+#brand {
+  background: #fff;
+  margin-left: 15px;
+  margin-top: 15px;
+}
 .brand {
   padding-top: 15px;
   font-size: 16px;
@@ -37,8 +41,9 @@
 .title {
   background: orange;
   color: #ffffff;
-  padding: 5px;
+  padding: 10px;
   margin-left: 15px;
+  position: relative;
 }
 
 .sitename {
@@ -71,6 +76,9 @@
 input[type="text"], input[type="password"], input[type="email"] {
   font-size: 16px !important;
   font-weight: bold;
+}
+.explanation {
+  font-size: 0.85em;
 }
 h4 select {
   -webkit-appearance: none;

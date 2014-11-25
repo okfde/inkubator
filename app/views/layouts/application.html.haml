@@ -24,13 +24,21 @@
   %body
     .container
       .row
-        .large-4.columns.title
-          .sitename
-            Inkubator
-        .large-5.large-offset-2.columns
-          %img{:src => "/assets/header-logox2.png", :class => "logo"}
-          %span.brand
-          Open Knowledge Foundation Deutschland
+        .large-5.columns
+          .title
+            .sitename
+              Inkubator
+          #brand
+            %img{:src => "/assets/header-logox2.png", :class => "logo"}
+            %span.brand
+            Open Knowledge Foundation Deutschland
+        - if user_signed_in?
+          .large-5.large.columns.spacetop-20
+            = current_user.try(:username) || current_user.email
+            \|
+            = link_to t("settings"), edit_user_registration_path, :class => 'my-settings'
+            \|
+            = link_to t("logout"), destroy_user_session_path, :method => :delete, :class => "logout"
       .row
         .small-8.large-centered.small-centered.columns.flash-span.spacetop-20
           - if flash[:notice]
@@ -52,15 +60,8 @@
                   = link_to t('all_ideas'), ideas_path , :class => "button success"
                 %li
                   = link_to t('create_idea'), new_idea_path , :class => "button success"
-          .large-5.large-offset-3.columns.spacetop-20
-            = current_user.try(:username) || current_user.email
-            \|
-            = link_to t("settings"), edit_user_registration_path, :class => 'my-settings'
-            \|
-            = link_to t("logout"), destroy_user_session_path, :method => :delete, :class => "logout"
-
-
-
+          .large-8.columns.explanation
+            = content_for?(:explanation) ? yield(:explanation) : ""
       .row
         .large-12.columns
           = yield

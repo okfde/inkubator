@@ -1,12 +1,13 @@
 - title t('all_ideas')
 
-%h2 Hintergrund
-.panel
-  %p
-    Die Grundidee des Inkubators ist es, dass alle Projektideen durch einen standardisierten Prozess durchlaufen, bei dem die Relevanz und die Machbarkeit einer Projektidee von allen Beteiligten bewertet werden. Nur, wenn eine Projektidee alle Prozessschritte erfolgreich durchläuft, soll ein Projekt umgesetzt werden. Für Änderungen an den Texten auf der ganzen Webseite bitte hier ändern:
-    %a{:href => "https://docs.google.com/spreadsheet/ccc?key=0AtMts_R3W2qxdFJRNVNUdUVhaTZsME1Bb2pyOGRHeEE#gid=0", :target => "_blank"}
-      Google Docs
-    und eine kurze E-Mail an Christian.Kreutz@okfn.org
+- content_for(:explanation) do
+  .panel
+    %h5 Hintergrund
+    %p
+      Die Grundidee des Inkubators ist es, dass alle Projektideen durch einen standardisierten Prozess durchlaufen, bei dem die Relevanz und die Machbarkeit einer Projektidee von allen Beteiligten bewertet werden. Nur, wenn eine Projektidee alle Prozessschritte erfolgreich durchläuft, soll ein Projekt umgesetzt werden. Für Änderungen an den Texten auf der ganzen Webseite bitte hier ändern:
+      %a{:href => "https://docs.google.com/spreadsheet/ccc?key=0AtMts_R3W2qxdFJRNVNUdUVhaTZsME1Bb2pyOGRHeEE#gid=0", :target => "_blank"}
+        Google Docs
+      und eine kurze E-Mail an mila.frerichs@okfn.org
 
 %h4
   = form_tag ideas_path, method: :get
