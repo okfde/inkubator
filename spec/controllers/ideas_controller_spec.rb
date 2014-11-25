@@ -10,6 +10,13 @@ describe IdeasController, type: :controller do
       get :index
       expect(assigns(:ideas)).to eq([idea])
     end
+    context "ideas complete" do
+      it "does not assign them as @ideas_archive" do
+        idea = create(:idea, status: 1, updated_at: 8.days.ago)
+        get :index
+        expect(assigns(:ideas_archive)).to_not include(idea)
+      end
+    end
   end
 
   describe "GET show" do
