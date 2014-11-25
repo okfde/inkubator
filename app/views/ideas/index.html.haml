@@ -8,17 +8,19 @@
       Google Docs
     und eine kurze E-Mail an Christian.Kreutz@okfn.org
 
-%h2
-  - if current_user.try(:board?)
-    Aktive Ideen
-  - else
-    Meine Ideen
+%h4
+  = form_tag ideas_path, method: :get
+  Zeige
+  = select_tag "by_type", options_for_select([['aktive', 'active'],['inaktive', 'inactive'],['abgeschlossene','finished']], params[:by_type]), :onchange => "this.form.submit()"
+  Ideen,
+  sortiert nach
+  = select_tag "order", options_for_select([['Datum', 'updated_at'],['Einreicher','user']], params[:order]), :onchange => "this.form.submit()"
+  in
+  = select_tag "by_phase", options_for_select([['allen', 'all'],['Ideenskizze','ideenskizze'],['Mentoren','mentor'],['Voting', 'voting']], params[:by_phase]), :onchange => "this.form.submit()"
+  Phase
 
 = render :partial => "idea_item", :locals => {:ideas => @ideas}
 
-%h2
-  Ideenspeicher
 %p
-  Ideen die ein Quorum nicht erreicht haben oder schon seit längerer Zeit (mehr als eine Woche) nicht mehr vom Ideengeber bearbeitet wurden.
-= render :partial => "idea_item", :locals => {:ideas => @ideas_archive}
+  inaktiv: Ideen die ein Quorum nicht erreicht haben oder schon seit längerer Zeit (mehr als eine Woche) nicht mehr vom Ideengeber bearbeitet wurden.
 

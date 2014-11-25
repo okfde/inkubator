@@ -2,9 +2,18 @@ class IdeasController < ApplicationController
   before_filter :authenticate_user!
   load_and_authorize_resource
 
+  has_scope :finished, only: :index
+  has_scope :active, default: 7.days.ago.to_s, only: :index
+  has_scope :by_type do |controller, scope, value|
+    scope.send(value)
+  end
+  has_scope :order
+  has_scope :by_phase do |controller, scope, value|
+    value == "all" ? scope : scope.send("#{value}_step")
+  end
+
   def index
-    @ideas = Idea.active(7.days.ago)
-    @ideas_archive = Idea.not_finished.entered_step_before(7.days.ago)
+    @ideas = apply_scopes(Idea).all
 
     respond_to do |format|
       format.html
