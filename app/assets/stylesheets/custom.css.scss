@@ -72,3 +72,44 @@ input[type="text"], input[type="password"], input[type="email"] {
   font-size: 16px !important;
   font-weight: bold;
 }
+h4 select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  text-indent: 0.01px;
+  -o-text-overflow: '';
+  text-overflow: '';
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+  border: 0;
+  border-bottom: 1px dashed #ccc;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  height: 1.5em;
+  position: relative;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  -ms-filter: none;
+  filter: none;
+  cursor: pointer;
+  display: inline-block;
+  *background-image: none;
+/* turn bg image for IE7 */
+  background: url("../assets/images/selecticon.gif") no-repeat 100% 0px;
+  background-position: right center;
+  padding: 0 25px 0 0;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  -ms-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  font-family: 'AdelleSans-Bold', "Helvetica", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: #4c4c4c;
+  border-bottom: 1px dashed #4c4c4c;
+  width: auto;
+}
