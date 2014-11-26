@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :idea do
-    title "Test"
+    title "Super tolle idee"
     description Faker::Lorem.sentence(3)
     problem Faker::Lorem.sentence(10)
     goal Faker::Lorem.sentence(15)
