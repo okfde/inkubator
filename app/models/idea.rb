@@ -23,7 +23,7 @@ class Idea < ActiveRecord::Base
   scope :active, ->(timestamp = 7.days.ago) { where('ideas.updated_at > ?', timestamp)}
   scope :inactive, -> (timestamp = 7.days.ago) { not_finished.entered_step_before(timestamp) }
   scope :finished, -> { where(status: 1) }
-  scope :not_finished, -> { where(status: 0) }
+  scope :not_finished, -> { not(finished) }
 
   scope :order, -> (order) { order(order) }
 
