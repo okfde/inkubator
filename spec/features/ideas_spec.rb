@@ -10,6 +10,19 @@ feature "Frontpage" do
       user = create(:user)
       login_as(user, scope: :user)
     end
+    context 'no ideas' do
+      scenario 'shows no results text' do
+        visit '/'
+        expect(page).to have_content('Keine Ergebnisse gefunden')
+      end
+    end
+    context 'ideas exist' do
+      given!(:idea) { create(:idea) }
+      scenario 'shows the active idea' do
+        visit '/'
+        expect(page).to have_content(idea.title)
+      end
+    end
     context 'filter ideas' do
       scenario 'show active ideas by default' do
         visit '/'

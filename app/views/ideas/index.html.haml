@@ -20,7 +20,10 @@
   = select_tag "by_phase", options_for_select(by_phase_options, params[:by_phase] || 'all'), :onchange => "this.form.submit()"
   Phase
 
-= render :partial => "idea_item", :locals => {:ideas => @ideas}
+- unless @ideas.empty?
+  = render :partial => "idea_item", :locals => {:ideas => @ideas}
+- else
+  %p= t('.no_result')
 
 %p
   inaktiv: Ideen die ein Quorum nicht erreicht haben oder schon seit längerer Zeit (mehr als eine Woche) nicht mehr vom Ideengeber bearbeitet wurden.

@@ -121,3 +121,6 @@ de:
         voting: Voting
         finance: Finanzen
         finance_voting: Finanzen Voting
+  ideas:
+    index:
+      no_result: Keine Ergebnisse gefunden
