@@ -1,5 +1,17 @@
 # Changelog
 
+## 2014-11-26
+### Added
+- Filter possibility via scopes for Ideas
+- more Integration tests
+
+### Changed
+- Layout of site
+- Layout of start page (Ideas page)
+
+### Removed
+- Ideenspeicher from Startpage (now integrated in filter)
+
 ## 2014-11-18
 ### Added
 - This Changelog
