@@ -3,6 +3,8 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'shoulda/matchers'
 require 'devise'
+require 'pry'
+include Warden::Test::Helpers
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
@@ -18,6 +20,9 @@ RSpec.configure do |config|
   config.extend ControllerMacros, :type => :controller
 
   config.before(:suite) do
+    Warden.test_mode!
+    DatabaseCleaner.strategy = :truncation
+    DatabaseCleaner.clean_with(:truncation)
     begin
       DatabaseCleaner.start
     ensure
