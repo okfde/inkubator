@@ -15,10 +15,6 @@ feature "Frontpage" do
         visit '/'
         expect(page).to have_select("by_type", selected: 'aktive')
       end
-      scenario 'can select type of ideas' do
-        visit '/'
-        expect(page).to have_selector('h3 select#by_type')
-      end
       scenario 'can change type of ideas' do
         visit '/'
         select('abgeschlossene', from: 'by_type')
@@ -32,13 +28,19 @@ feature "Frontpage" do
       end
       scenario 'can change order' do
         visit '/'
-        expect(page).to have_selector('h3 select#order')
+        select('Einreicher', from: 'order')
+        expect(page).to have_select("order", selected: 'Einreicher')
       end
     end
     context 'phase filter ideas' do
       scenario 'default phase filter is none' do
         visit '/'
-        expect(page).to have_select("by_phase", selected: 'none')
+        expect(page).to have_select("by_phase", selected: 'allen')
+      end
+      scenario 'can change phase filter' do
+        visit '/'
+        select('Ideenskizze', from: 'by_phase')
+        expect(page).to have_select("by_phase", selected: 'Ideenskizze')
       end
     end
   end

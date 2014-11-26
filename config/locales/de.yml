@@ -105,3 +105,19 @@ de:
               is_required: "wird benötigt."
               minimum_content: "Minimum 100 Zeichen."
               maximum_content: "Maximum 300 Zeichen."
+  helpers:
+    idea:
+      by_type:
+        active: aktive
+        inactive: inaktive
+        finished: abgeschlossene
+      order:
+        date: Datum
+        user: Einreicher
+      by_phase:
+        all: allen
+        ideenskizze: Ideenskizze
+        mentor: Mentoren
+        voting: Voting
+        finance: Finanzen
+        finance_voting: Finanzen Voting

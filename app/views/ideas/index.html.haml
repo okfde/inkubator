@@ -12,12 +12,12 @@
 %h4
   = form_tag ideas_path, method: :get
   Zeige
-  = select_tag "by_type", options_for_select([['aktive', 'active'],['inaktive', 'inactive'],['abgeschlossene','finished']], params[:by_type]), :onchange => "this.form.submit()"
+  = select_tag "by_type", options_for_select(by_type_options, params[:by_type] || 'active' ), :onchange => "this.form.submit()"
   Ideen,
   sortiert nach
-  = select_tag "order", options_for_select([['Datum', 'updated_at'],['Einreicher','user']], params[:order]), :onchange => "this.form.submit()"
+  = select_tag "order", options_for_select(order_options, params[:order] || 'updated_at'), :onchange => "this.form.submit()"
   in
-  = select_tag "by_phase", options_for_select([['allen', 'all'],['Ideenskizze','ideenskizze'],['Mentoren','mentor'],['Voting', 'voting']], params[:by_phase]), :onchange => "this.form.submit()"
+  = select_tag "by_phase", options_for_select(by_phase_options, params[:by_phase] || 'all'), :onchange => "this.form.submit()"
   Phase
 
 = render :partial => "idea_item", :locals => {:ideas => @ideas}

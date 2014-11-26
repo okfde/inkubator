@@ -73,4 +73,16 @@ module IdeasHelper
     end
   end
 
+  def by_type_options
+    [[t('helpers.idea.by_type.active'), 'active'],[t('helpers.idea.by_type.inactive'), 'inactive'],[t('helpers.idea.by_type.finished'),'finished']]
+  end
+
+  def order_options
+    [[t('helpers.idea.order.date'), 'updated_at'],[t('helpers.idea.order.user'),'user']]
+  end
+
+  def by_phase_options
+    [[t('helpers.idea.by_phase.all'), 'all'],[t('helpers.idea.by_phase.ideenskizze'),'ideenskizze'],[t('helpers.idea.by_phase.mentor'),'mentor'],[t('helpers.idea.by_phase.voting'), 'voting'],[t('helpers.idea.by_phase.finance'), 'finance'],[t('helpers.idea.by_phase.finance_voting'), 'finance_voting']]
+  end
+
 end
